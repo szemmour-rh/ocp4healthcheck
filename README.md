@@ -3,15 +3,13 @@
 ```
 Execute the script as follows:
 
-./ocp4healthcheck.sh 
+python3 ocp4healthcheck.py
 
-usage: ocp4healthcheck.sh [--live | --must-gather] [--scanaudit] [--log]
+usage: ocp4healthcheck.py --live 
 
 Options:
 
---live | --must-gather  
-          live         => analyze a running cluster in real-time
-          must-gather  => analyze a must-gather
+--live                 => analyze a running cluster in real-time
 --scanaudit            => scan audit logs (only works with --live option for now)
 --log                  => log the output to a file named ocp4healthcheck.log (created in the current working directory)
 ```
