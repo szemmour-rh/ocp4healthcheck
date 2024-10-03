@@ -306,10 +306,12 @@ def print_monitoring_alerts(cmd, mustgather=False):
             alerts_json = json.loads(alerts_data.stdout)
             print("Alerts JSON:", alerts_json)  # Debugging statement
             for data in alerts_json['data']:
-                if data['state'] == 'firing':
-                    alertname = data['labels']['alertname']
-                    description = data['annotations']['description']
-                    print(f"{alertname}|{description}")
+                if 'data' in alerts_json and isinstance(alerts_json['data'], list):
+                  for data in alerts_json['data']:
+                    if data['state'] == 'firing':
+                        alertname = data['labels']['alertname']
+                        description = data['annotations']['description']
+                        print(f"{alertname}|{description}")
 
 def print_cluster_events(cmd):
     # Print cluster events (Non-Normal)
